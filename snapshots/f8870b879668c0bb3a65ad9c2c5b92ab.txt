@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/files/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/files/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/files/favicon-16x16.png">
+  <title>Tech</title>
+</head>
+<body>
+<nav>
+  <div class="header sticky" id="main_header">
+    <a id="home" href="/"> Home </a>
+    <a id="blog" href="/blog/"> Blog </a>
+    <a id="tech" href="/tech/"> Technical </a>
+    <a id="gallery" href="/gallery/"> Gallery </a>
+    <a id="linkedout" href="/files/resume.pdf"> LinkedOut </a>
+    <a id="about" class="last_a" href="/about/"> About </a>
+  </div>
+</nav>
+
+<style>
+ #tech {
+     background-color: #345;
+ }
+
+ #tech:hover {
+     background-color: #456;
+ }
+</style>
+<div class="main">
+<div class="centered">
+<h1>Technical Things</h1>
+<p>See <a href="/blog/">my blog page</a> for non-technical stuff I've written.</p>
+<p class="lead">
+    <div class="table-of-contents">
+        <a href="/tech/sudoku"><div>
+            <h3>Sudoku Puzzles</h3>
+            <div class="date">August 4, 2025</div>
+            <p>Some sudoku puzzles I have written.</p>
+        </div> </a>
+
+        <a href="/tech/voronoi-line"><div>
+            <h3>Voronoi Part 2: Lengths of Boundaries</h3>
+            <div class="date">July 11, 2025</div>
+            <p><b>(CW: JS (for LaTeX))</b> In which pi makes a special appearance.</p>
+        </div> </a>
+
+        <a href="/tech/voronoi"><div>
+            <h3>Perimeters of Polygonal Voronoi Cells</h3>
+            <div class="date">July 10, 2025</div>
+            <p><b>(CW: JS (for LaTeX))</b> An attempt at explaining and simplifying math that a friend worked out.</p>
+        </div> </a>
+
+        <a href="/tech/garden-gnome"><div>
+            <h3>Garden Gnome</h3>
+            <div class="date">January 1, 2025</div>
+            <p>I make a website for the public good, learning Go and other web dev tools along the way.</p>
+        </div> </a>
+
+        <a href="/tech/running"><div>
+            <h3>Runalysis</h3>
+            <div class="date">November 25, 2024</div>
+            <p>Some data analysis on my running, using the R language.</p>
+        </div> </a>
+
+        <a href="/tech/hdr"><div>
+            <h3>How to HDR</h3>
+            <div class="date">February 19, 2024</div>
+            <p>A return to an old Computational Photography problem set from a class. Fixing up a friend's photography, using C++.</p>
+        </div> </a>
+
+        <a href="/files/thesis.pdf"><div>
+            <h3>MIT MEng Thesis</h3>
+            <div class="date">February 2023 - February 2024</div>
+            <p>Looking into the feasibility of a new specification language for model checking. Lots of Coq proofs.</p>
+        </div> </a>
+
+        <a href="/tech/math"><div>
+            <h3>Math Problems</h3>
+            <div class="date">October 3, 2023</div>
+            <p>Assorted little math problems that I've written over the years. Updated rarely.</p>
+        </div> </a>
+
+        <a href="/tech/fours"><div>
+            <h3>The One Four Problem</h3>
+            <div class="date">January 21, 2023</div>
+            <p>Lots of square roots and logarithms. A mathematical Coq proof.</p>
+        </div> </a>
+
+        <a href="/tech/projects"><div>
+            <h3>[Unfinished] Personal Projects</h3>
+            <div class="date">Probably 2021</div>
+            <p>Various small scripts and programs I've written for my own amusement.</p>
+        </div> </a>
+    </div>
+</p>
+<div style="width : 100%; height : 64px; float : left"></div>
+</div>
+</div>
+</body>
+<footer>
+    <div class="footer-content">
+        <p> <a href="http://kammer.xyz"> kammer.xyz</a> </p>
+        <p> This website was last modified on 2025-10-08 </p>
+    </div>
+</footer>
+</html>

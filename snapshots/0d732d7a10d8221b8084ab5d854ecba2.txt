@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" type="text/css" href="/style.css">
+  <link rel="apple-touch-icon" sizes="180x180" href="/files/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/files/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/files/favicon-16x16.png">
+  <title>Blog</title>
+</head>
+<body>
+<nav>
+  <div class="header sticky" id="main_header">
+    <a id="home" href="/"> Home </a>
+    <a id="blog" href="/blog/"> Blog </a>
+    <a id="tech" href="/tech/"> Technical </a>
+    <a id="gallery" href="/gallery/"> Gallery </a>
+    <a id="linkedout" href="/files/resume.pdf"> LinkedOut </a>
+    <a id="about" class="last_a" href="/about/"> About </a>
+  </div>
+</nav>
+
+<style>
+ #blog {
+     background-color: #345;
+ }
+
+ #blog:hover {
+     background-color: #456;
+ }
+</style>
+<div class="main">
+<div class="centered">
+<h1>Blog</h1>
+<p>See <a href="/tech/">my technical stuff page</a> for technical stuff I've made.</p>
+<p class="lead">
+    <div class="table-of-contents">
+        <a href="/blog/wordplay"><div>
+            <h3>Wordplay</h3>
+            <div class="date">July 9, 2025</div>
+            <p>Mostly cryptic clues.</p>
+        </div> </a>
+
+        <a href="/blog/mr-frank"><div>
+            <h3>Mr. Frank</h3>
+            <div class="date">June 24, 2024</div>
+            <p>A thank you to a former teacher.</p>
+        </div> </a>
+
+        <a href="/blog/deep-water-solo"><div>
+            <h3>Deep Water Solo</h3>
+            <div class="date">May 22, 2024</div>
+            <p>One of the most memorable misadventures I've had.</p>
+        </div> </a>
+
+        <a href="/blog/fanfiction"><div>
+            <h3>Fanfiction</h3>
+            <div class="date">May 21, 2024</div>
+            <p>A low-probability embarrassing moment.</p>
+        </div> </a>
+
+        <a href="/blog/food"><div>
+            <h3>Food</h3>
+            <div class="date">April 28, 2024</div>
+            <p>Some thoughts on cooking for large groups of people, such as in coops. Not quite complete.</p>
+        </div> </a>
+
+        <a href="/blog/mtb"><div>
+            <h3>Mountain Biking Competition</h3>
+            <div class="date">October 3, 2023</div>
+            <p>I get lost and injure myself.</p>
+        </div> </a>
+
+        <a href="/blog/80-20-couch"><div>
+            <h3>The 80/20 Couch</h3>
+            <div class="date">September 26, 2023</div>
+            <p>The Pareto principle comes back to bite me.</p>
+        </div> </a>
+
+        <a href="/blog/spring-break"><div>
+            <h3>Spring Break Canyoneering 2023</h3>
+            <div class="date">April 4, 2023</div>
+            <p>...and all of the shenanigans, near-death experiences, and desert windstorms that came with it.</p>
+        </div> </a>
+
+        <a href="/blog/credit-cards"><div>
+            <h3>Credit Cards</h3>
+            <div class="date">January 26, 2023</div>
+            <p>The title is pretty self-explanatory. I have credit card referral links.</p>
+        </div> </a>
+
+        <a href="/blog/links"><div>
+            <h3>My Internet Presence</h3>
+            <div class="date">January 15, 2023</div>
+            <p>Sometimes, I appear online. Here's where.</p>
+        </div> </a>
+    </div>
+</p>
+<div style="width : 100%; height : 64px; float : left"></div>
+</div>
+</div>
+</body>
+<footer>
+    <div class="footer-content">
+        <p> <a href="http://kammer.xyz"> kammer.xyz</a> </p>
+        <p> This website was last modified on 2025-10-08 </p>
+    </div>
+</footer>
+</html>
