@@ -2,4 +2,6 @@
 # Add one URL per line
 # Lines starting with # are comments
 
-https://example.com
+https://kammer.xyz
+https://kammer.xyz/blog/
+https://kammer.xyz/tech/
