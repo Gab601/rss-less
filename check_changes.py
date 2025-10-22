@@ -112,7 +112,7 @@ def check_changes():
     sender_password = os.environ.get('SENDER_PASSWORD')
     recipient_email = os.environ.get('RECIPIENT_EMAIL', sender_email)
     smtp_server = os.environ.get('SMTP_SERVER', 'smtp.gmail.com')
-    smtp_port = int(os.environ.get('SMTP_PORT', '587'))
+    smtp_port = int(os.environ.get('SMTP_PORT', 587))
 
     if not sender_email or not sender_password:
         print("Error: Email credentials not configured")
