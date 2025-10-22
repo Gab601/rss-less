@@ -1,0 +1,5 @@
+# List of URLs to track for changes
+# Add one URL per line
+# Lines starting with # are comments
+
+https://example.com
