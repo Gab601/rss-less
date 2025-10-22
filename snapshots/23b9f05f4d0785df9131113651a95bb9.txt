@@ -37,7 +37,7 @@
     Hi, my name is Gabriel Kammer and this is my website!
 </p>
 <p>
-    I studied at MIT, graduating with a bachelor's in Computer Science in February of 2023, and a master's in Computer Science in February of 2024. I minored in math during my undergrad, and my master's thesis was in the field of formal verification.
+    I completed my bachelor's in Computer Science with a minor in Mathematics at MIT, graduating in 2023. I stayed another year at MIT to do my MEng in the Formal Methods field, and graduated in 2024. Since then, I've worked as a Formal Verification Engineer at Intel, and then at AMD.
 </p>
 <p>
     You can read more about me in the <a href="/about/">About</a> section and see my rÃ©sumÃ© <a href="/files/resume.pdf">here</a>.
@@ -51,7 +51,7 @@
 <footer>
     <div class="footer-content">
         <p> <a href="http://kammer.xyz"> kammer.xyz</a> </p>
-        <p> This website was last modified on 2025-10-08 </p>
+        <p> This website was last modified on 2025-10-22 </p>
     </div>
 </footer>
 </html>
