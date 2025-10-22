@@ -15,19 +15,16 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 
-def load_urls(urls_file='urls.txt'):
-    """Load URLs from the configuration file."""
-    urls = []
-    if not Path(urls_file).exists():
-        print(f"Error: {urls_file} not found")
-        return urls
+def load_urls():
+    """Load URLs from environment variable (comma-separated list)."""
+    urls_string = os.environ.get('TRACKED_URLS', '')
 
-    with open(urls_file, 'r') as f:
-        for line in f:
-            line = line.strip()
-            # Skip empty lines and comments
-            if line and not line.startswith('#'):
-                urls.append(line)
+    if not urls_string:
+        print("Error: TRACKED_URLS environment variable not set")
+        return []
+
+    # Split by comma and clean up whitespace
+    urls = [url.strip() for url in urls_string.split(',') if url.strip()]
 
     return urls
 
@@ -51,28 +48,28 @@ def fetch_webpage(url):
         return None
 
 
-def save_snapshot(url, content, snapshots_dir='snapshots'):
-    """Save webpage snapshot to disk."""
+def save_snapshot_hash(url, content_hash, snapshots_dir='snapshots'):
+    """Save only the hash of webpage content to disk."""
     Path(snapshots_dir).mkdir(exist_ok=True)
 
     # Create a safe filename from the URL
-    filename = hashlib.md5(url.encode()).hexdigest() + '.txt'
+    filename = hashlib.md5(url.encode()).hexdigest() + '.hash'
     filepath = Path(snapshots_dir) / filename
 
     with open(filepath, 'w', encoding='utf-8') as f:
-        f.write(content)
+        f.write(content_hash)
 
     return filepath
 
 
-def load_previous_snapshot(url, snapshots_dir='snapshots'):
-    """Load previous snapshot if it exists."""
-    filename = hashlib.md5(url.encode()).hexdigest() + '.txt'
+def load_previous_snapshot_hash(url, snapshots_dir='snapshots'):
+    """Load previous snapshot hash if it exists."""
+    filename = hashlib.md5(url.encode()).hexdigest() + '.hash'
     filepath = Path(snapshots_dir) / filename
 
     if filepath.exists():
         with open(filepath, 'r', encoding='utf-8') as f:
-            return f.read()
+            return f.read().strip()
     return None
 
 
@@ -132,22 +129,22 @@ def check_changes():
         if current_content is None:
             continue
 
-        # Load previous snapshot
-        previous_content = load_previous_snapshot(url)
+        # Calculate current content hash
+        current_hash = get_content_hash(current_content)
 
-        if previous_content is None:
+        # Load previous snapshot hash
+        previous_hash = load_previous_snapshot_hash(url)
+
+        if previous_hash is None:
             # First time checking this URL
-            print(f"  -> First time tracking this URL, saving initial snapshot")
-            save_snapshot(url, current_content)
+            print(f"  -> First time tracking this URL, saving initial hash")
+            save_snapshot_hash(url, current_hash)
         else:
             # Compare with previous version
-            current_hash = get_content_hash(current_content)
-            previous_hash = get_content_hash(previous_content)
-
             if current_hash != previous_hash:
                 print(f"  -> CHANGE DETECTED!")
                 changes_detected.append(url)
-                save_snapshot(url, current_content)
+                save_snapshot_hash(url, current_hash)
             else:
                 print(f"  -> No changes")
 

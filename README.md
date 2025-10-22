@@ -9,24 +9,16 @@ This project automatically monitors webpages for changes and sends email notific
 
 - Daily automated checks at 7:00 AM (configurable)
 - Email notifications when changes are detected
-- Stores snapshots of webpages for comparison
-- Easy URL management through a simple text file
+- Private URL tracking using GitHub Secrets
+- Stores only SHA-256 hashes, not full webpage content
 - Secure credential storage using GitHub Secrets
+- No publicly visible URL list
 
 ## Setup
 
-### 1. Add URLs to Track
+### 1. Configure GitHub Secrets
 
-Edit [urls.txt](urls.txt) and add the URLs you want to monitor (one per line):
-
-```
-https://example.com/page1
-https://example.com/page2
-```
-
-### 2. Configure GitHub Secrets
-
-To enable email notifications, you need to add the following secrets to your GitHub repository:
+To enable the webpage tracker, you need to add the following secrets to your GitHub repository:
 
 1. Go to your GitHub repository
 2. Click on **Settings** → **Secrets and variables** → **Actions**
@@ -34,6 +26,7 @@ To enable email notifications, you need to add the following secrets to your Git
 
 #### Required Secrets:
 
+- `TRACKED_URLS`: Comma-separated list of URLs to monitor (e.g., `https://example.com,https://example.org/page`)
 - `SENDER_EMAIL`: Your email address (e.g., `your-email@gmail.com`)
 - `SENDER_PASSWORD`: Your email password or app-specific password
 
@@ -43,7 +36,7 @@ To enable email notifications, you need to add the following secrets to your Git
 - `SMTP_SERVER`: SMTP server address (defaults to `smtp.gmail.com`)
 - `SMTP_PORT`: SMTP port (defaults to `587`)
 
-### 3. Gmail App Password Setup
+### 2. Gmail App Password Setup
 
 If you're using Gmail, you'll need to create an app-specific password:
 
@@ -53,13 +46,13 @@ If you're using Gmail, you'll need to create an app-specific password:
 4. Generate a new app password for "Mail"
 5. Use this 16-character password as your `SENDER_PASSWORD` secret
 
-### 4. Enable GitHub Actions
+### 3. Enable GitHub Actions
 
 1. Go to the **Actions** tab in your GitHub repository
 2. Enable workflows if prompted
 3. The workflow will run automatically every day at 7:00 AM UTC
 
-### 5. Manual Testing
+### 4. Manual Testing
 
 You can manually trigger the workflow to test it:
 
@@ -69,14 +62,20 @@ You can manually trigger the workflow to test it:
 ## How It Works
 
 1. The GitHub Action runs daily at 7:00 AM UTC (cron: `0 7 * * *`)
-2. The script reads URLs from [urls.txt](urls.txt)
+2. The script reads URLs from the `TRACKED_URLS` GitHub secret
 3. For each URL:
    - Fetches the current webpage content
-   - Compares it with the previous snapshot (stored in `snapshots/`)
-   - If changed, adds the URL to the notification list
-   - Saves the new snapshot
+   - Calculates a SHA-256 hash of the content
+   - Compares the hash with the previous snapshot hash (stored in `snapshots/`)
+   - If the hash changed, adds the URL to the notification list
+   - Saves the new hash
 4. If any changes were detected, sends an email notification
-5. Commits updated snapshots back to the repository
+5. Commits updated snapshot hashes back to the repository
+
+**Privacy Features:**
+- URLs are stored as GitHub secrets, not in the repository
+- Only SHA-256 hashes are stored, not the actual webpage content
+- Your tracked URLs remain private
 
 ## Customization
 
@@ -116,6 +115,7 @@ You can test the script locally before pushing to GitHub:
 pip install -r requirements.txt
 
 # Set environment variables
+export TRACKED_URLS="https://example.com,https://example.org/page"
 export SENDER_EMAIL="your-email@gmail.com"
 export SENDER_PASSWORD="your-app-password"
 export RECIPIENT_EMAIL="recipient@example.com"
@@ -129,15 +129,16 @@ python check_changes.py
 ```
 rss-less/
 ├── check_changes.py              # Main script
-├── urls.txt                      # List of URLs to track
 ├── requirements.txt              # Python dependencies
-├── snapshots/                    # Stored webpage snapshots
+├── snapshots/                    # Stored webpage hash snapshots
 │   └── .gitkeep
 ├── .github/
 │   └── workflows/
 │       └── check-changes.yml     # GitHub Actions workflow
 └── README.md                     # This file
 ```
+
+Note: The `urls.txt` file is no longer used. URLs are now stored in the `TRACKED_URLS` GitHub secret.
 
 ## Troubleshooting
 

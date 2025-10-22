@@ -31,6 +31,7 @@ jobs:
 
       - name: Run change detection
         env:
+          TRACKED_URLS: ${{ secrets.TRACKED_URLS }}
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
           RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
